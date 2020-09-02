@@ -68,7 +68,7 @@ textarea{
 }
 
 .saveBtn:hover {
-
+    background-color: rgba(32, 178, 170, .5);
 }
 
 .footer {
