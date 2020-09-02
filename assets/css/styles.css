@@ -6,9 +6,71 @@ body {
 
 .jumbotron {
     text-align: center;
-    background-color: rgba(0,0,0,.8);
+    background-color: rgba(0,0,0,.5);
     color: white;
     border-radius: 0;
-    border-bottom: 5px solid black;
+    border-bottom: 5px solid rgba(0,0,0,.25);
 }
 
+.row {
+    white-space: pre-wrap;
+    height: 80px;
+    border-top: 1px solid white;;
+}
+
+.hour {
+    background-color: white;
+    color: black;
+    border-top: 1px dashed black;
+    border-bottom: 1px dashed black;
+    border-left: 1px dashed black;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+textarea{
+    background: transparent;
+    border: none;
+    resize: none;
+    color: #000000;
+    border-left: 1px dashed black;
+    padding: 7px;
+    width: 100%;
+    height: 100%;
+  }
+
+.description{
+    white-space: pre-wrap;
+}
+
+.past {
+    background-color: lightgrey;
+    color: white;
+}
+  
+.present {
+    background-color:rgba(255,0,0,.35);
+    color: black;
+}
+  
+.future {
+    background-color: lightgreen;
+    color: black;
+}
+
+.saveBtn {
+    background-color: lightseagreen;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+}
+
+.saveBtn:hover {
+
+}
+
+.footer {
+    height: 25px;
+}
