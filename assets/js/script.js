@@ -64,8 +64,28 @@ var timeKeeper = [
     }
 ];
 
-var jumbotronDateText = moment().format('dddd, MMMM Do');
-$('#currentDay').text(jumbotronDateText)
+function init(){
+    //Set current date in the Jumbotron header
+    var jumbotronDateText = moment().format('dddd, MMMM Do');
+    $('#currentDay').text(jumbotronDateText);
+
+    //Collect object from the localStorage and if it exists, set it to timerKeeper
+    var storedObj = JSON.parse(localStorage.getItem("timeKeeper"));
+    if (storedObj) {timeKeeper = storedObj;}
+    storeTextArea();
+    displaySavedText();
+}
+
+
+function storeTextArea(){
+    localStorage.setItem("timeKeeper", JSON.stringify(timeKeeper));
+}
+
+function displaySavedText(){
+    timeKeeper.forEach(function (element) {
+        $(`#${element.id}`).val(element.textArea);
+    })
+}
 
 timeKeeper.forEach(function(element) {
     //Create a row/form to append objects to
@@ -96,8 +116,21 @@ timeKeeper.forEach(function(element) {
     //Create the save button
     var saveIcon = $("<i class='far fa-save fa-lg'></i>");
     var saveButton = $('<button>').attr('class', 'col-md-1 saveBtn');
+    
+    //Append all items to eachother. Row gets the 3 Columns added to it.
     saveButton.append(saveIcon);
-
     textDiv.append(newTextArea);
     newRow.append(displayHourField, textDiv, saveButton);
 });
+
+init();
+
+//Event Listener for each save button. Gets the row index and collects text from textArea in Row[index]
+$('.saveBtn').on('click', function(event) {
+    event.preventDefault();
+    var saveIndex = $(this).siblings('.description').children('.future').attr("id");
+    timeKeeper[saveIndex].textArea = $(this).siblings('.description').children('.future').val();
+    storeTextArea();
+    displaySavedText();
+})
+
