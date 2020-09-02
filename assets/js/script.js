@@ -96,13 +96,13 @@ timeKeeper.forEach(function(element) {
     var displayHourField = $('<div>')
         .text(`${element.hour}${element.ampm}`)
         .attr({
-            "class": "col-md-2 hour"
+            "class": "col-2 hour"
     });
 
     //Create div that will hold the text area in the center of each row
     var textDiv = $('<div>')
         .attr({
-            "class": "col-md-9 description p-0"
+            "class": "col-9 description p-0"
     });
     
     /*Create the textArea that will go inside of textDiv for user to input items
@@ -115,15 +115,13 @@ timeKeeper.forEach(function(element) {
     
     //Create the save button
     var saveIcon = $("<i class='far fa-save fa-lg'></i>");
-    var saveButton = $('<button>').attr('class', 'col-md-1 saveBtn');
+    var saveButton = $('<button>').attr('class', 'col-1 saveBtn');
     
     //Append all items to eachother. Row gets the 3 Columns added to it.
     saveButton.append(saveIcon);
     textDiv.append(newTextArea);
     newRow.append(displayHourField, textDiv, saveButton);
 });
-
-init();
 
 //Event Listener for each save button. Gets the row index and collects text from textArea in Row[index]
 $('.saveBtn').on('click', function(event) {
@@ -132,5 +130,6 @@ $('.saveBtn').on('click', function(event) {
     timeKeeper[saveIndex].textArea = $(this).siblings('.description').children('.future').val();
     storeTextArea();
     displaySavedText();
-})
+});
 
+init();
