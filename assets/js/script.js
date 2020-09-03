@@ -71,11 +71,10 @@ function init(){
 
     //Collect object from the localStorage and if it exists, set it to timerKeeper
     var storedObj = JSON.parse(localStorage.getItem("timeKeeper"));
-    if (storedObj) {timeKeeper = storedObj;}
+    if (storedObj) {timeKeeper = storedObj;};
     storeTextArea();
     displaySavedText();
 }
-
 
 function storeTextArea(){
     localStorage.setItem("timeKeeper", JSON.stringify(timeKeeper));
@@ -95,23 +94,18 @@ timeKeeper.forEach(function(element) {
     //Create the div that displays the rows Hour
     var displayHourField = $('<div>')
         .text(`${element.hour}${element.ampm}`)
-        .attr({
-            "class": "col-2 hour"
-    });
+        .attr({ "class": "col-2 hour" });
 
     //Create div that will hold the text area in the center of each row
-    var textDiv = $('<div>')
-        .attr({
-            "class": "col-9 description p-0"
-    });
+    var textDiv = $('<div>').attr({ "class": "col-9 description p-0" });
     
     /*Create the textArea that will go inside of textDiv for user to input items
     Depending on the current hour, display grey if the hour has past,
     display red if current hour, display green if future hour */
     var newTextArea = $('<textarea>').attr("id", element.id);
     if(element.time < moment().format('HH')) {newTextArea.attr("class", "past");}
-    if(element.time > moment().format('HH')) {newTextArea.attr('class', 'future');} 
-    if(element.time === moment().format('HH')) {newTextArea.attr('class', 'present');}
+    if(element.time > moment().format('HH')) {newTextArea.attr('class', 'present');} 
+    if(element.time === moment().format('HH')) {newTextArea.attr('class', 'future');}
     
     //Create the save button
     var saveIcon = $("<i class='far fa-save fa-lg'></i>");
@@ -126,8 +120,17 @@ timeKeeper.forEach(function(element) {
 //Event Listener for each save button. Gets the row index and collects text from textArea in Row[index]
 $('.saveBtn').on('click', function(event) {
     event.preventDefault();
-    var saveIndex = $(this).siblings('.description').children('.future').attr("id");
-    timeKeeper[saveIndex].textArea = $(this).siblings('.description').children('.future').val();
+    var saveFutureIndex = $(this).siblings('.description').children('.future').attr("id");
+    var savePresentIndex = $(this).siblings('.description').children('.present').attr("id");
+
+    if (saveFutureIndex) {
+      timeKeeper[saveFutureIndex].textArea = $(this).siblings('.description').children('.future').val();  
+    }
+
+    if (savePresentIndex) {
+        timeKeeper[savePresentIndex].textArea = $(this).siblings('.description').children('.present').val();
+    }
+
     storeTextArea();
     displaySavedText();
 });
