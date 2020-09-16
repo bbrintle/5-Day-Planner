@@ -21,7 +21,7 @@
 * ---Grey = Hours that have past
 
 * Got to the 
-<a href="https://bbrintle.github.io/5-Day-Planner/">Code Quiz</a>
+<a href="https://bbrintle.github.io/5-Day-Planner/">Day Planner</a>
 <img src="./assets/images/DayPlannerView.PNG">
 <img src="./assets/images/DayPlannerView2.PNG">
 <img src="./assets/images/DayPlannerView3.PNG">
