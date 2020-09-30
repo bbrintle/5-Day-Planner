@@ -29,7 +29,8 @@ A workday planner that allows you to save daily tasks by the hour. Enter your ta
 
 
 * Got to the 
-<a href="https://bbrintle.github.io/5-Day-Planner/">Day Planner</a>
+<a href="https://bbrintle.github.io/5-Day-Planner/">Visit Site</a>
+<br>
 <img src="./assets/images/DayPlannerView.PNG">
 <img src="./assets/images/DayPlannerView2.PNG">
 <img src="./assets/images/DayPlannerView3.PNG">
