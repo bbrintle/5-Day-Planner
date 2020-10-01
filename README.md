@@ -1,4 +1,4 @@
-# Day Planner (Homework - 5)
+# Day Planner
 
 Root folder contains:
 * README.md      (Read Me File)
